@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+
+    %link{:rel => :stylesheet, :href => '/stylesheets/index.css'}
+    
+    %script{:src => 'http://www.google.com/jsapi'}
+    :javascript
+      google.load('visualization', '1', {'packages':['table']})
+    %script{:src => 'javascripts/jQuery.js'}
+    %script{:src => 'javascripts/mustache.js'}
+    %script{:src => 'javascripts/index.js'}
+    -# %script{:id => 'template', :type => 'x-tmpl-mustache'}
+      -# %label
+        -# %span {{column}}
+        -# %input{:type => 'text', :id=>"{{id}}", :name=> "{{id}}" }
+    %title Hello Liz
+
+  %body
+    .main
+      %h1 Welcome there!
+      %form
+        - columns.each do |column|
+          %label
+            %span #{column}
+            %input{:type => 'text', 
+                   :id => "#{column.downcase.gsub(' ','_')}",
+                   :name => "#{column.downcase.gsub(' ', '_')}"}
+        %label
+          %span &nbsp;
+          %input.button{:type => 'button', :value=> 'Send'}
+          %input.button{:type => 'button', :value=> 'Clear'}
