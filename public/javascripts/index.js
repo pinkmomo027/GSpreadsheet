@@ -5,50 +5,53 @@
     //GSpreadsheet.getColumns();
   });
 
-  function render_page(columns){
-    for (var index in columns){
+  // LET RUBY TALK WITH GOOGLE DRIVE 
+  // REMOVE JAVASCRIPT FUNCTIONS TALKING WITH 
+  // GOOGLE SPREADSHEET
 
-      var template = $('#template').html();
-      var column = columns[index];
-      var view = {column: column, id: column.toLowerCase().replace(' ', '_')}
-      Mustache.parse(template);
-      var rendered = Mustache.render(template, view);
-      $('.form').append(rendered);      
-    }
+  // function render_page(columns){
+  //   for (var index in columns){
 
-  };
+  //     var template = $('#template').html();
+  //     var column = columns[index];
+  //     var view = {column: column, id: column.toLowerCase().replace(' ', '_')}
+  //     Mustache.parse(template);
+  //     var rendered = Mustache.render(template, view);
+  //     $('.form').append(rendered);      
+  //   }
+  // };
 
-  var GSpreadsheet = {
+  // var GSpreadsheet = {
       
-    sheet_link : "https://spreadsheets.google.com/tq?key=0Ag55hNpvj_MZdEdyOFZISjZTSXpiRUhEcVpYX3F0ZFE",
-    columns : [],
+  //   sheet_link : "https://spreadsheets.google.com/tq?key=",
+  //   columns : [],
 
-    getSheetData: function(url, callback){
-      var _this = this;
-      var query = new google.visualization.Query(url);
-      query.setQuery("SELECT *");
-      query.send($.proxy(callback, _this));
-    }
+  //   getSheetData: function(url, callback){
+  //     var _this = this;
+  //     var query = new google.visualization.Query(url);
+  //     query.setQuery("SELECT *");
+  //     query.send($.proxy(callback, _this));
+  //   }
 
-    ,getColumns: function(){
-      var _this = this;
-      var url = _this.sheet_link + "&gid=1&headers=1";
-      this.getSheetData(url, this.setColumns);
-    }
+  //   ,getColumns: function(){
+  //     var _this = this;
+  //     var url = _this.sheet_link + "&gid=1&headers=1";
+  //     this.getSheetData(url, this.setColumns);
+  //   }
 
-    ,setColumns: function(query_response){
-      var _this = this;
-      var data = _this.jsonifyResponse(query_response);
-      _this.columns = $.map(data.rows, function(row, index){
-        return row.c[0].v;
-      });
-      render_page(_this.columns);
-    }
+  //   ,setColumns: function(query_response){
+  //     var _this = this;
+  //     var data = _this.jsonifyResponse(query_response);
+  //     _this.columns = $.map(data.rows, function(row, index){
+  //       return row.c[0].v;
+  //     });
+  //     render_page(_this.columns);
+  //   }
     
-    ,jsonifyResponse: function(query_response){
-      return JSON.parse(query_response.getDataTable().toJSON());
-    }
+  //   ,jsonifyResponse: function(query_response){
+  //     return JSON.parse(query_response.getDataTable().toJSON());
+  //   }
 
-  };
+  // };
 
 })(jQuery, window, window.document);
