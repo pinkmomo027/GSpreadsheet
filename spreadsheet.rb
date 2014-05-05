@@ -6,13 +6,12 @@ class Spreadsheet
 	attr_accessor :session
 
 	def initialize
-		@session = GoogleDrive.login("xiangninglicornell@gmail.com", "")
+		@session = GoogleDrive.login("lizligithub@gmail.com", "githubaccount")
 	end
 
 	def columns
-		file = @session.spreadsheet_by_key('0Ag55hNpvj_MZdEdyOFZISjZTSXpiRUhEcVpYX3F0ZFE')
+		file = @session.spreadsheet_by_key('1M_CZgLnuLUzsfdhNahPY6WoH8NQklXyj12Ll_qpucYQ')
 		rows = file.worksheets[1].rows.map(&:first)
-		rows.delete("COLUMNS")
 		rows
 	end
 end

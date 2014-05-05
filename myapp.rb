@@ -13,9 +13,5 @@ end
 post '/' do
 	p " = " * 20
 	p params
-	redirect '/thankyou'
-end
-
-get '/thankyou' do
 	haml :thankyou, :format => :html5
 end
