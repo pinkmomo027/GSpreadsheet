@@ -19,7 +19,7 @@
   %body
     .main
       %h1 Welcome there!
-      %form
+      %form{:method => 'post', :action => ''}
         - columns.each do |column|
           %label
             %span #{column}
@@ -28,5 +28,5 @@
                    :name => "#{column.downcase.gsub(' ', '_')}"}
         %label
           %span &nbsp;
-          %input.button{:type => 'button', :value=> 'Send'}
+          %input.button{:type => 'button', :value=> 'Send', :type => 'submit'}
           %input.button{:type => 'button', :value=> 'Clear'}
