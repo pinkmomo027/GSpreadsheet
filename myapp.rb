@@ -1,6 +1,6 @@
 #Ruby Gems
 require 'sinatra'
-require 'Haml'
+require 'haml'
 require 'sass'
 require 'spreadsheet'
 
