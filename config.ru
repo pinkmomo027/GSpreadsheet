@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'bundler'
+require 'bundler/setup'
+require 'Haml'
 Bundler.require(:default)
 require 'sass/plugin/rack'
 
