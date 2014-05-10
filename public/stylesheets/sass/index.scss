@@ -26,15 +26,14 @@ body{
     .form-control {
       margin-left: 120px;
 
-      &>button{
+      button{
         background: #9AB0FF;
         border: $border;
         padding: 10px 25px 10px 25px;
         color: #FFF;
-        display: inline-block;
       }
 
-      &>button:hover{
+      button:hover{
         background: #4653E0;
       }      
     }
