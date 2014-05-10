@@ -22,15 +22,14 @@
       %h1 Welcome there!
       %form{:method => 'post', :action => ''}
         - columns.each do |column|
+          - id = column.first.downcase.gsub(' ','_')
           %label
             %span #{column.first}
             - if column.last == 'textarea'
-              %textarea{:rows => 4}
+              %textarea{:rows => 4, :id => "#{id}", :name => "#{id}",:required => true}
             - else
-              %input{:type => "#{column.last}",
-                     :id => "#{column.first.downcase.gsub(' ','_')}",
-                     :name => "#{column.first.downcase.gsub(' ','_')}"}
+              %input{:type => "#{column.last}", :id => "#{id}", :name => "#{id}",:required => true}
         %label
           %span &nbsp;
-          %input.button{:type => 'submit', :value=> 'Send'}
-          %input.button{:type => 'reset', :value=> 'Clear'}
+          %button{:type => 'submit', :value=> 'Submit'}Submit
+          %button{:type => 'reset', :value=> 'Clear'}Clear
