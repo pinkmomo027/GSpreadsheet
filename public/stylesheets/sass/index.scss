@@ -56,7 +56,8 @@ body{
 
       textarea, input[type='text'], input[type='date']{
         width: 60%;
-        border: 1px solid #DADADA;
+        border: $border;
+        color: #888;
         margin-bottom: 16px;
         margin-right: 6px;
         margin-top: 2px;
