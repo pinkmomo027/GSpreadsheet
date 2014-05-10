@@ -10,10 +10,11 @@
     %script{:src => 'javascripts/jQuery.js'}
     %script{:src => 'javascripts/mustache.js'}
     %script{:src => 'javascripts/index.js'}
-    -# %script{:id => 'template', :type => 'x-tmpl-mustache'}
-      -# %label
-        -# %span {{column}}
-        -# %input{:type => 'text', :id=>"{{id}}", :name=> "{{id}}" }
+    %script{:id => 'template', :type => 'x-tmpl-mustache'}
+      %label
+        %span {{name}}
+        %input{:type => "{{type}}", :id=>"{{id}}", :name=> "{{id}}" }
+      
     %title Hello Liz
 
   %body
@@ -22,11 +23,14 @@
       %form{:method => 'post', :action => ''}
         - columns.each do |column|
           %label
-            %span #{column}
-            %input{:type => 'text', 
-                   :id => "#{column.downcase.gsub(' ','_')}",
-                   :name => "#{column.downcase.gsub(' ', '_')}"}
+            %span #{column.first}
+            - if column.last == 'textarea'
+              %textarea{:rows => 4}
+            - else
+              %input{:type => "#{column.last}",
+                     :id => "#{column.first.downcase.gsub(' ','_')}",
+                     :name => "#{column.first.downcase.gsub(' ','_')}"}
         %label
           %span &nbsp;
-          %input.button{:type => 'button', :value=> 'Send', :type => 'submit'}
-          %input.button{:type => 'button', :value=> 'Clear'}
+          %input.button{:type => 'submit', :value=> 'Send'}
+          %input.button{:type => 'reset', :value=> 'Clear'}

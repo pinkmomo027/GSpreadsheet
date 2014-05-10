@@ -2,8 +2,30 @@
   var sheet_link;
   
   $(document).ready(function(){
+    Form.run();
     //GSpreadsheet.getColumns();
   });
+
+  var Form = {
+    mainSelector : 'form'
+
+    ,run: function(){
+    }
+    ,render_input: function(args){
+      var template = $('#template').html();
+      var data = {
+        name: args[0],
+        id: args[0].toLowerCase().replace(' ', '_'), 
+        type: args[1]
+      }
+
+      Mustache.parse(template);
+      var rendered = Mustache.render(template, data)
+      $(this.mainSelector).append(rendered);
+    }
+  }
+
+  window.render_input = $.proxy(Form.render_input, Form);
 
   // LET RUBY TALK WITH GOOGLE DRIVE 
   // REMOVE JAVASCRIPT FUNCTIONS TALKING WITH 
