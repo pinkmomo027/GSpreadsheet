@@ -15,13 +15,25 @@ body{
     color: #888;
     text-shadow: 1px 1px 1px #FFF;
     border: 1px solid #DADADA;
+    
+    .separator {
+      clear: both;
+      border-bottom: $border;
+      margin-bottom: 20px;
+    }
 
  		h1 {
  			font: 25px;
  			display: block;
- 			border-bottom: 1px solid #DADADA;
+ 			//border-bottom: 1px solid #DADADA;
  			padding: 0px 0px 10px 40px;
  		}
+
+    p {
+      font: 14px;
+      font-style: italic;
+      padding: 10px 35px;
+    }
 
     .form-control {
       margin-left: 120px;

@@ -13,6 +13,8 @@
   %body
     .main
       %h1= meta_tags['title']
+      %p= meta_tags['description']
+      .separator
       %form{:method => 'post', :action => ''}
         - columns.each do |column|
           - id = column.first.downcase.gsub(' ','_')
