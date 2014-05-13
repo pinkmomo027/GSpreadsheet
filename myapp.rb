@@ -8,8 +8,9 @@ set :spreadsheet, Spreadsheet.new
 
 get '/' do
   spreadsheet = Spreadsheet.new
-  columns = spreadsheet.columns
-  haml :index, :format => :html5, :locals => {:columns => columns}
+  columns     = spreadsheet.columns
+  meta_tags   = spreadsheet.meta_tags
+  haml :index, :format => :html5, :locals => {:columns => columns, :meta_tags => meta_tags}
 end
 
 post '/' do

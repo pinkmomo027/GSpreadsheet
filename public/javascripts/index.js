@@ -3,29 +3,40 @@
   
   $(document).ready(function(){
     Form.run();
-    //GSpreadsheet.getColumns();
   });
 
   var Form = {
     mainSelector : 'form'
 
     ,run: function(){
+      this.addListeners();
+      this.addValidators();
     }
-    ,render_input: function(args){
-      var template = $('#template').html();
-      var data = {
-        name: args[0],
-        id: args[0].toLowerCase().replace(' ', '_'), 
-        type: args[1]
-      }
 
-      Mustache.parse(template);
-      var rendered = Mustache.render(template, data)
-      $(this.mainSelector).append(rendered);
+    ,addValidators: function(){
+      $(this.mainSelector).find('#date_of_birth').attr('max', new Date().toISOString().slice(0,10));
+    }
+
+    ,addListeners: function(){
+      var _this = this;
+      $(_this.mainSelector).find('#date_of_birth').blur($.proxy(_this.calculateAge, _this));
+    }
+    ,calculateAge: function(){
+      var _this = this;
+      var $container = $(_this.mainSelector)
+      var $age = $container.find('#birthday_display');
+
+      var dob = new Date($container.find('#date_of_birth').val());
+      var yob = dob.getFullYear();
+      var today = new Date();
+      if( !isNaN(yob) && dob < today ){
+        var age = today.getFullYear() - yob;
+        $age.val(age);
+      }else{
+        $age.val('');
+      }
     }
   }
-
-  window.render_input = $.proxy(Form.render_input, Form);
 
   // LET RUBY TALK WITH GOOGLE DRIVE 
   // REMOVE JAVASCRIPT FUNCTIONS TALKING WITH 

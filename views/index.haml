@@ -4,22 +4,15 @@
 
     %link{:rel => :stylesheet, :href => '/stylesheets/index.css'}
     
-    %script{:src => 'http://www.google.com/jsapi'}
-    :javascript
-      google.load('visualization', '1', {'packages':['table']})
     %script{:src => 'javascripts/jquery.js'}
     %script{:src => 'javascripts/mustache.js'}
     %script{:src => 'javascripts/index.js'}
-    %script{:id => 'template', :type => 'x-tmpl-mustache'}
-      %label
-        %span {{name}}
-        %input{:type => "{{type}}", :id=>"{{id}}", :name=> "{{id}}" }
-      
-    %title Hello Liz
+    %meta{:name => 'description', :content => "#{meta_tags['description']}" }
+    %title= meta_tags['title']
 
   %body
     .main
-      %h1 Welcome there!
+      %h1= meta_tags['title']
       %form{:method => 'post', :action => ''}
         - columns.each do |column|
           - id = column.first.downcase.gsub(' ','_')
